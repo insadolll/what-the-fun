@@ -1,51 +1,73 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style type="text/css">
- 	ul {
-		list-style-type: none;
-		background-color: #a9daa0;
-		width: 15%;
-		padding: 0;
-		margin:  0;
-		position: fixed;
-		height: 100%;
-		overflow: auto;
+<style>
+	.main_body {
+		display: flex;
+		justify-content: center;
+		padding-top: 50px;
 	}
- 
-	li a {
-		text-decoration: none;
-		display: block;
-		color: #000;
-		padding: 8px 15px 8px 15px;
+
+	.left_body {
+		background-color: rgb(255, 255, 255);
+		margin-right: 100px;
+		width: 660px;
+		height: 3000px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.announcement_box {
+		background-color: rgb(255, 255, 255);
+		width: 640px;
+		margin: 10px;
+		min-height: auto;
+	}
+
+	.announcement_img {
+		width: 100%;
+		object-fit: contain;
+	}
+
+	.announcement_content {
+		padding: 0px 10px;
+	}
+
+	.announcement_txt {
+		font-size: 14px;
+	}
+
+	.announcement_name {
+		padding: 10px;
+		display: flex;
+		align-items: center;
+	}
+
+	.announcement_name_txt {
+		font-size: 14px;
+		padding: 0px 10px;
 		font-weight: bold;
 	}
- 
-	li a.home {
-		background-color: rgb(45, 233, 61);
-		color: #fff;
-	}
- 
-	li a:hover:not(.home) {
-		background-color: #333;
-		color: #fff;
-	}       
-    </style>
-    <title>EKNOWINT</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  </head>
-  <body>
-    <ul>
-        <li><a class="home" href="">HOME</a></li>
-        <li><a href="#announce">공지사항</a></li>
-        <li><a href="ipaddr">사내 IP LIST</a></li>
-        <li><a href="#phone">연락처</a></li>
-        <li><a href="#board">게시판</a></li>
-    </ul>>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  </body>
-</html>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</style>
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main_body">
+	<div class="left_body">
+		<div class="border announcement_box">
+			<span class="announcement_name"> 남상민 </span>
+			<img class="announcement_img"
+				src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F2uD9D%2FbtqSa9k7McZ%2FompUgsQh5OTxABnky9PdP1%2Fimg.png">
+		</div>
+		<div class="announcement_content">
+			<p class="announcement_txt"><b> 남상민 </b> 공지사항 테스트 이다.</p>
+		</div>
+		<div class="border announcement_box">
+			<span class="announcement_name"> 남상민 </span>
+			<img class="announcement_img"
+				src="https://cdn.ppomppu.co.kr/zboard/data3/2022/0305/900w_20220305175452_rgTgW3BKsw.jpg">
+		</div>
+		<div class="announcement_content">
+			<p class="announcement_txt"><b> 남상민 </b> 1111111111111111111111.</p>
+		</div>
+	</div>
+</div>
+{% endblock %}

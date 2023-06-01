@@ -12,6 +12,8 @@ class IPAddress(models.Model):
     gateway = models.CharField(max_length=15)
     hostname = models.CharField(max_length=50, blank=True)
     os = models.CharField(max_length=50)
+    ip_id = models.CharField(max_length=50, blank=True)
+    ip_pw = models.CharField(max_length=50, blank=True)
     note = models.TextField(blank=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='active')
 

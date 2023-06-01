@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>담당자 삭제</h1>
+  <p>다음 담당자를 삭제하시겠습니까?</p>
+  <p><strong>이름:</strong> {{ contact.name }}</p>
+  <p><strong>직위:</strong> {{ contact.position }}</p>
+  <p><strong>전화번호:</strong> {{ contact.phone }}</p>
+  <p><strong>이메일:</strong> {{ contact.email }}</p>
+  <p><strong>비고:</strong> {{ contact.note }}</p>
+
+  <form action="{% url 'contact_delete' site_id=site.id contact_id=contact.id %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">삭제</button>
+  </form>
+  
+  <a href="{% url 'site_list' %}" class="btn btn-secondary">취소</a>
+{% endblock %}

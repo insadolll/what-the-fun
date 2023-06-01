@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import ldap
+from django_auth_ldap.config import LDAPSearch
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +45,9 @@ INSTALLED_APPS = [
     "bootstrap4",
     "eknowint",
     "ipaddr",
+    "django_auth_ldap",
+    "ek_contact",
+    "site_contact",
 ]
 
 MIDDLEWARE = [
@@ -123,3 +130,29 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# 인증 백엔드 구성
+
+AUTHENTICATION_BACKENDS = [
+    'django_auth_ldap.backend.LDAPBackend',
+]
+
+AUTH_LDAP_SERVER_URI = 'ldap://192.168.230.141:389'
+AUTH_LDAP_BIND_DN = 'CN=administrator,CN=Users,DC=eknowint,DC=com'
+AUTH_LDAP_BIND_PASSWORD = 'fpTcmrhgha$#530'
+AUTH_LDAP_USER_SEARCH = LDAPSearch(
+    'DC=eknowint,DC=com',
+    ldap.SCOPE_SUBTREE,
+    '(sAMAccountName=%(user)s)',
+)
+AUTH_LDAP_USER_ATTR_MAP = {
+    'first_name': 'givenName',
+    'last_name': 'sn',
+    'email': 'mail',
+}
+LOGIN_REDIRECT_URL = 'Main'
+
+LOGIN_URL = 'login'
+
+SESSION_EXPIRE_SECONDS = 1800

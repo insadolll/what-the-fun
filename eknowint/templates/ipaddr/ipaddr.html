@@ -9,8 +9,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>IP ADDRESS LIST</h1>
-<div style="max-width: calc(100% - 340px)">
+<div>
+<h1>사내 IP 목록</h1>
+</div>
+<div style="max-width: calc(100% - 340px);">
     <button type="button" class="add-btn" onclick="window.location.href='{% url 'ipaddr_add' %}'">IP 추 가</button>
 </div>
 <table class="table table-striped table-hover">
@@ -22,6 +24,8 @@
             <th>Gateway</th>
             <th>Hostname</th>
             <th>OS</th>
+            <th>ID</th>
+            <th>Password</th>
             <th>Note</th>
             <th>Actions</th>
         </tr>
@@ -35,6 +39,8 @@
             <td>{{ ipaddress.gateway }}</td>
             <td>{{ ipaddress.hostname }}</td>
             <td>{{ ipaddress.os }}</td>
+            <td>{{ ipaddress.ip_id }}</td>
+            <td>{{ ipaddress.ip_pw }}</td>
             <td>{{ ipaddress.note }}</td>
             <td>
                 <div class="btn-group" role="group">

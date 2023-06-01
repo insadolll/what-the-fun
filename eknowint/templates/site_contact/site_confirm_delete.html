@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>고객사 삭제</h1>
+
+<p>다음 고객사를 삭제하시겠습니까?</p>
+<p><strong>{{ site.site_name }}</strong></p>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">삭제</button>
+  <a href="{% url 'site_list' %}" class="btn btn-secondary">취소</a>
+</form>
+{% endblock %}

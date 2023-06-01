@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>고객사: {{ site.site_name }}</h1>
+<p>주소: {{ site.site_address }}</p>
+<p>담당영업: {{ site.site_contact }}</p>
+
+<a href="{% url 'site_update' site_id=site.id %}">수정</a>
+<a href="{% url 'site_delete' site_id=site.id %}">삭제</a>
+
+
+<h2>담당자:</h2>
+<table>
+<ul>
+  {% for contact in site.contacts.all %}
+    <li>
+      {{ contact.name }}  {{ contact.position }} - {{ contact.phone }} - {{ contact.email }} - {{ contact.note }}
+      <a href="{% url 'contact_update' site_id=site.id contact_id=contact.id %}">수정</a>
+      <a href="{% url 'contact_delete' site_id=site.id contact_id=contact.id %}">삭제</a>
+    </li>
+  {% empty %}
+    <li>고객 담당자 추가해 주세요.</li>
+  {% endfor %}
+</ul>
+
+<div><a href="{% url 'contact_create' site_id=site.id %}">담당자 등록</a></div>
+<div><a href="{% url 'site_list' %}">목록으로 돌아가기</a></div>
+{% endblock %}

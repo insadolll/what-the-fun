@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>고객사 목록</h1>
+<a href="{% url 'site_create' %}">고객사 등록</a>
+
+
+<ul>
+    {% for site in sites|dictsort:'site_name' %}
+    <li><a href="{% url 'site_detail' site_id=site.id %}">{{ site.site_name }}</a></li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}
